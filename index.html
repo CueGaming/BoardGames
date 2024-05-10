@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuesBoardGames</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        .board-game {
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .board-game.chess {
+            background-image: url('chess.jpg');
+        }
+        .board-game.connect-4 {
+            background-image: url('connect4.jpg');
+        }
+        .board-game.rock-paper-scissors {
+            background-image: url('rockpaperscissors.jpg');
+        }
+        .board-game.hangman {
+            background-image: url('hangman.jpg');
+        }
+        .board-game.checkers {
+            background-image: url('checkers.jpg');
+        }
+        .board-game.battleship {
+            background-image: url('battleship.jpg');
+        }
+        .board-game.guess-who {
+            background-image: url('guesswho.jpg');
+        }
+        /* Add more board game classes and images as needed */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Made By CueGaming</h1>
+            <hr class="line">
+        </div>
+    </header>
+
+    <div class="row">
+        <div class="board-game chess" onclick="goToGame('chess')">Chess</div>
+        <div class="board-game connect-4" onclick="goToGame('connect4')">4 in a Row</div>
+        <div class="board-game rock-paper-scissors" onclick="goToGame('rockpaperscissors')">Rock Paper Scissors</div>
+        <div class="board-game hangman" onclick="goToGame('hangman')">Hangman</div>
+        <div class="board-game checkers" onclick="goToGame('checkers')">Checkers</div>
+        <div class="board-game battleship" onclick="goToGame('battleship')">Battleship</div>
+        <div class="board-game guess-who" onclick="goToGame('guesswho')">Guess Who</div>
+        <!-- Add more board games as needed -->
+    </div>
+
+    <!-- Your website content goes here -->
+
+    <a href="https://discord.gg/bqM4tJgaYh" class="book-request-link">Join The Discord</a>
+
+    <script>
+        function goToGame(gameName) {
+            window.location.href = gameName + '.html';
+        }
+    </script>
+</body>
+</html>
