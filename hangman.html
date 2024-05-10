@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <style>
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hangman</h1>
+    <div id="word"></div>
+    <div id="guesses"></div>
+    <div id="result"></div>
+    <button onclick="newGame()">New Game</button>
+
+    <script>
+        const words = ['apple', 'banana', 'orange', 'grape', 'strawberry'];
+        let chosenWord, guessedLetters;
+
+        function newGame() {
+            chosenWord = words[Math.floor(Math.random() * words.length)];
+            guessedLetters = new Set();
+            updateWordDisplay();
+            updateGuessesDisplay();
+            document.getElementById('result').innerText = '';
+        }
+
+        function updateWordDisplay() {
+            const wordDisplay = chosenWord.split('').map(letter => guessedLetters.has(letter) ? letter : '_').join(' ');
+            document.getElementById('word').innerText = wordDisplay;
+        }
+
+        function updateGuessesDisplay() {
+            const guessesDisplay = [...guessedLetters].join(', ');
+            document.getElementById('guesses').innerText = `Guessed Letters: ${guessesDisplay}`;
+        }
+
+        function guess(letter) {
+            if (!guessedLetters.has(letter)) {
+                guessedLetters.add(letter);
+                updateWordDisplay();
+                updateGuessesDisplay();
+                if (!chosenWord.split('').some(letter => !guessedLetters.has(letter))) {
+                    document.getElementById('result').innerText = 'You win!';
+                }
+            }
+        }
+
+        // Initialize a new game on page load
+        window.onload = newGame;
+    </script>
+</body>
+</html>
